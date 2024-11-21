@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6761cb6c8b73e43b62b38a44fa7b14, type: 3}
+  m_Name: GrassTileData
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 11400000, guid: 532fbb90670ef82418634a7ad6fee300, type: 2}
+  - {fileID: 11400000, guid: b0c5d4fa989d3094782539f833fa04aa, type: 2}
+  - {fileID: 11400000, guid: 19e2bdba547fef24cbf9d4de5ff50a6e, type: 2}
+  - {fileID: 11400000, guid: 4a78491fb0194a6418cdd44fac6d63ed, type: 2}
+  - {fileID: 11400000, guid: 4a13de1b56b8ae34383357e760b567f7, type: 2}
+  - {fileID: 11400000, guid: edfb4292d6a032b4ab28bcbd73b6b152, type: 2}
+  - {fileID: 11400000, guid: a87fb9d1ca0029c4f89eb65cc5fc605b, type: 2}
+  - {fileID: 11400000, guid: 8cd661068b099014181d22461f8c3d38, type: 2}
+  - {fileID: 11400000, guid: 1be4ab6745714bb41b810122e705e18b, type: 2}
+  - {fileID: 11400000, guid: 71fafcb8e0eca1b409de23ca3e56c8e2, type: 2}
+  - {fileID: 11400000, guid: ae8ae2aa67e2ed74fb9588d09b1eac95, type: 2}
+  - {fileID: 11400000, guid: c1b1727f3b452b048b23e8a392941803, type: 2}
+  - {fileID: 11400000, guid: 1a92adce939120c4491f12183934574b, type: 2}
+  - {fileID: 11400000, guid: 32df7c278ad0f9047839056e0f2de758, type: 2}
+  - {fileID: 11400000, guid: 580642f6d8e99d84180f5d04c4df705d, type: 2}
+  - {fileID: 11400000, guid: 6e66afac08e5fa746abeb4bc62b09b68, type: 2}
+  - {fileID: 11400000, guid: 000b87a2a324d714896ed44fae96e3ec, type: 2}
+  - {fileID: 11400000, guid: 27090ec96ddfa6445b2200f9d0803c03, type: 2}
+  - {fileID: 11400000, guid: 554e93437f894684c846793ad2bedb75, type: 2}
+  - {fileID: 11400000, guid: 10d09d42822a34c4ab3ed8cb3b25997e, type: 2}
+  - {fileID: 11400000, guid: a1495b0c0e0c2c342ae6741444660fba, type: 2}
+  - {fileID: 11400000, guid: c9782d024bb0b0e438ae9752d6385813, type: 2}
+  - {fileID: 11400000, guid: fca6c8f861fb6b0498b18ce9e2552c94, type: 2}
+  - {fileID: 11400000, guid: 12da4d680cde4fd4eb497b6a451f9ff3, type: 2}
+  - {fileID: 11400000, guid: bb8dc10dab037a048bce701ffeabd477, type: 2}
+  - {fileID: 11400000, guid: ee2a3ae3704a7764c85ac151979a8517, type: 2}
+  - {fileID: 11400000, guid: e60db26226d6d61429fc9ed31afc4bf2, type: 2}
+  - {fileID: 11400000, guid: 4be56ac850ff38941b8adbc531670679, type: 2}
+  - {fileID: 11400000, guid: 53fd4cd4db26fdc47b7daffd4a9e4042, type: 2}
+  - {fileID: 11400000, guid: e0feab071e140cf4e8b7300d95bb6b98, type: 2}
+  - {fileID: 11400000, guid: d13fc4ffed2762f49867c243cf859646, type: 2}
+  - {fileID: 11400000, guid: 98effa75d12e4f64592740ef63e57b39, type: 2}
+  - {fileID: 11400000, guid: 7377888f3e33f724a9bb0a6d659109f7, type: 2}
+  - {fileID: 11400000, guid: 420627494f8ae024f961590bbecbc538, type: 2}
+  - {fileID: 11400000, guid: e46148305fe525f4e9c2b8287ecc4803, type: 2}
+  - {fileID: 11400000, guid: a2b29ea5164edaa4190aff6c147b2c04, type: 2}
+  - {fileID: 11400000, guid: 8b53b99eb6989134aa664d198edfde50, type: 2}
+  - {fileID: 11400000, guid: aab595ff13d13f74dbc5980fad0cbf83, type: 2}
+  - {fileID: 11400000, guid: 1600c4c09f7056f448a49b5b0a53bb58, type: 2}
+  - {fileID: 11400000, guid: 8bfbb05d2df75664db237dab6701f2ba, type: 2}
+  - {fileID: 11400000, guid: 67f017552be7526468f637b6e2d41bc2, type: 2}
+  - {fileID: 11400000, guid: e9c878a0dcf36854cb63b66aefc34a03, type: 2}
+  - {fileID: 11400000, guid: 8da2858e7246cf9429d1870a5f7843c4, type: 2}
+  - {fileID: 11400000, guid: d119072b1542bab458423782ac47ceeb, type: 2}
+  - {fileID: 11400000, guid: 8b5c1807f6ef17d418225d937547d2ec, type: 2}
+  - {fileID: 11400000, guid: ba060772ae47494428e8c4749a5c83e9, type: 2}
+  - {fileID: 11400000, guid: 93ebf3a3ad21b1d4dba552a914625287, type: 2}
+  - {fileID: 11400000, guid: 7fd3d7a18490aa1499ce9906c86f6907, type: 2}
+  isBlocking: 0
+  walkingCost: 1
+  TileDefenceModifier: 0
+  TileAttackModifier: 0
+  tileType: 0
