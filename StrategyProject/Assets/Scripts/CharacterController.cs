@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterController : Unit
 {
@@ -24,6 +26,8 @@ public class CharacterController : Unit
             case UnitType.NPC:
                 UnitManager.Instance.NPCUnits.Add(this);
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
@@ -50,6 +54,15 @@ public class CharacterController : Unit
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, Speed * Time.deltaTime);
     }
 
+    private void OnMouseOver()
+    {
+        if (!Mouse.current.leftButton.wasPressedThisFrame)
+            return;
+
+        if(!UnitManager.Instance.selectedUnit)
+            UnitManager.Instance.SelectUnit(this);
+    }
+
     void snapToGrid()
     {
         Vector3Int gridPosition = LevelManager.Instance.WalkableMap.WorldToCell(transform.position);
@@ -59,22 +72,30 @@ public class CharacterController : Unit
         movePoint.position = transform.position;
     }
 
-    public void MoveUnit(List<Spot> path)
+    public void MoveUnit(Node path)
     {
         StartCoroutine(WalkToPosition(path));
     }
 
-    IEnumerator WalkToPosition(List<Spot> path)
+    IEnumerator WalkToPosition(Node path)
     {
         state = UnitState.MOVING;
-        while (path.Count > 1)
+
+        while (path.previous != null)
         {
-            movePoint.position = new Vector3(path[path.Count - 1].X + 0.5f, path[path.Count - 1].Y + 0.5f, 0);
-
+            movePoint.position = new Vector3(path.tile.x + 0.5f, path.tile.y + 0.5f, 0);
             yield return new WaitForPositionReached(transform, movePoint);
-
-            path.RemoveAt(path.Count - 1);
+            path = path.previous;
         }
+
+        //while (path.Count > 1)
+        //{
+        //    movePoint.position = new Vector3(path[^1].X + 0.5f, path[^1].Y + 0.5f, 0);
+
+        //    yield return new WaitForPositionReached(transform, movePoint);
+
+        //    path.RemoveAt(path.Count - 1);
+        //}
     }
 
 

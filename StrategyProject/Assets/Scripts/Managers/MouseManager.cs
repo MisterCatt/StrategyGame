@@ -1,146 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
-using static Unit;
 
 public class MouseManager : MonoBehaviour
 {
-    //public static Unit chosenUnit;
+    public static MouseManager Instance;
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+            Destroy(gameObject);
+            return;
+        }
 
-    //public GameObject MouseCursor;
+        Instance = this;
+    }
 
-    //public enum RoundTurn { SELECTUNIT, UNITACTION };
-    //public RoundTurn playerTurn = RoundTurn.SELECTUNIT;
+    public GameObject mouseCursor;
 
-    //private void Update()
-    //{
+    private Mouse _currentMouse;
+    public Vector2 MousePosition { get; private set; }
+    public Vector3Int GridPosition { get; private set; }
 
-    //    //switch (GameManager.Instance.state)
-    //    //{
-    //    //    case GameManager.GameState.MAINMENU:
-    //    //        break;
-    //    //    case GameManager.GameState.PLAYERTURN:
-    //    //        MouseHover();
+    private void Start()
+    {
+        _currentMouse = Mouse.current;
+        mouseCursor.transform.parent = null;
+    }
 
-    //    //        if (Input.GetMouseButtonDown(0))
-    //    //        {
-    //    //            LeftClick();
-    //    //        }
+    private void Update()
+    {
+        MouseHover();
+    }
 
-    //    //        if (Input.GetMouseButtonDown(1))
-    //    //        {
-    //    //            RightClick();
-    //    //        }
-    //    //        break;
-    //    //    case GameManager.GameState.ENEMYTURN:
-    //    //        MouseHover();
-    //    //        break;
-    //    //    case GameManager.GameState.GAME:
-    //    //        break;
-            
-    //    //}
-    //}
+    void MouseHover()
+    {
+        MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        GridPosition = LevelManager.Instance.WalkableMap.WorldToCell(MousePosition);
 
-    //void MouseHover()
-    //{
-    //    Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //    Vector3Int gridPosition = LevelManager.Instance.WalkableMap.WorldToCell(mousepos);
+        MousePosition = Camera.main.ScreenToWorldPoint(_currentMouse.position.ReadValue());
 
-    //    MouseCursor.transform.position = new Vector2(gridPosition.x + 0.5f, gridPosition.y + 0.5f);        
-    //}
+        Vector3Int gridPosition = LevelManager.Instance.WalkableMap.WorldToCell(MousePosition);
 
-    //RaycastHit2D hit;
+        mouseCursor.transform.position = new Vector2(gridPosition.x + 0.5f, gridPosition.y + 0.5f);
 
-    //void LeftClick()
-    //{
-    //    Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //    Vector3Int gridPosition = LevelManager.Instance.WalkableMap.WorldToCell(mousepos);
+        
+    }
 
-    //    hit = Physics2D.Raycast(mousepos, Vector2.zero);
+    public void LeftClick()
+    {
+        if (!_currentMouse.leftButton.wasPressedThisFrame)
+            return;
 
-    //    Unit unit;
+        EventManager.Instance.LeftClick(new Vector2(GridPosition.x, GridPosition.y));
+    }
 
-    //    switch (playerTurn)
-    //    {
-    //        case RoundTurn.SELECTUNIT:
-    //            if (!hit)
-    //            {
-    //                ClickedTile();
-    //                return;
-    //            }
+    public void RightClick()
+    {
+        if (!_currentMouse.rightButton.wasPressedThisFrame)
+            return;
 
-    //            unit = hit.collider.GetComponent<Unit>();
-
-    //            if (unit.state == UnitState.WAITING)
-    //            {
-    //                print(unit.name);
-    //                chosenUnit = unit;
-
-    //                playerTurn = RoundTurn.UNITACTION;
-
-    //                EventManager.Instance.SelectedUnit(new Vector2Int(gridPosition.x, gridPosition.y));
-    //            }
-    //            break;
-    //        case RoundTurn.UNITACTION:
-
-    //            if (hit)
-    //            {
-    //                unit = hit.collider.GetComponent<Unit>();
-
-    //                switch (unit.type)
-    //                {
-    //                    case UnitType.FRIENDLY:
-    //                        break;
-    //                    case UnitType.ENEMY:
-
-    //                        chosenUnit.MoveUnit(GridManager.GetRoadMap());
-
-    //                        //chosenUnit.AttackUnit(unit);
-
-    //                        chosenUnit = null;
-    //                        playerTurn = RoundTurn.SELECTUNIT;
-
-    //                        EventManager.Instance.UnselectUnit();
-    //                        break;
-    //                    case UnitType.NPC:
-    //                        break;
-    //                }
-    //                return;
-    //            }
-
-    //            //This might cause problems later, Remember this
-    //            if (!ClickedTile())
-    //                return;
-    //            chosenUnit.MoveUnit(GridManager.GetRoadMap());
-    //            //chosenUnit.MoveUnit(gridPosition);
-    //            chosenUnit = null;
-
-    //            playerTurn = RoundTurn.SELECTUNIT;
-    //            EventManager.Instance.UnselectUnit();
-    //            break;
-    //    }
-    //}
-
-    //void RightClick()
-    //{
-    //    if (!chosenUnit)
-    //        return;
-
-    //    chosenUnit = null;
-    //    playerTurn = RoundTurn.SELECTUNIT;
-
-    //    EventManager.Instance.UnselectUnit();
-    //}
-
-    //bool ClickedTile()
-    //{
-    //    Vector2 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //    Vector3Int gridPosition = LevelManager.Instance.WalkableMap.WorldToCell(mousepos);
-
-    //    if (!LevelManager.Instance.IsValid(gridPosition))
-    //        return false;
-
-    //    return true;
-    //}
+        EventManager.Instance.RightClick(new Vector2(GridPosition.x, GridPosition.y));
+    }
 }

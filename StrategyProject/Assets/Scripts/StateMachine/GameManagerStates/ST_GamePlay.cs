@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class ST_GamePlay : State
@@ -18,6 +19,9 @@ public class ST_GamePlay : State
         {
             unit.UpdateCharacter();
         }
+
+        MouseManager.Instance.RightClick();
+        MouseManager.Instance.LeftClick();
     }
 
     public override void FixedUpdateState()

@@ -1,0 +1,57 @@
+{
+    "name": "PlayerInput",
+    "maps": [
+        {
+            "name": "Ingame",
+            "id": "179503ae-a110-4091-8f85-6d9c3906fd28",
+            "actions": [],
+            "bindings": []
+        },
+        {
+            "name": "UI",
+            "id": "3cc3f291-a8d8-4209-adc0-f4a606b95240",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "edce0bc4-8794-4c7c-b066-204354b66cce",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "af86ac28-234b-42ea-aa90-64446d3231c1",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Mouse&Keyboard",
+            "bindingGroup": "Mouse&Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

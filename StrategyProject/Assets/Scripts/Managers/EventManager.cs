@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class EventManager : MonoBehaviour
 {
@@ -24,6 +25,18 @@ public class EventManager : MonoBehaviour
     public void LevelLoaded()
     {
         OnLevelLoaded?.Invoke();
+    }
+
+    public event Action<Vector2> OnLeftClick, OnRightClick;
+
+    public void LeftClick(Vector2 pos)
+    {
+        OnLeftClick?.Invoke(pos);
+    }
+
+    public void RightClick(Vector2 pos)
+    {
+        OnRightClick?.Invoke(pos);
     }
 
     public event Action<Vector2Int> OnSelectUnit;

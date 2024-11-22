@@ -10,7 +10,8 @@ public class ST_PlayerTurn : State
     }
     public override void UpdateState()
     {
-        
+        MouseManager.Instance.LeftClick();
+        MouseManager.Instance.RightClick();
     }
 
     public override void FixedUpdateState()

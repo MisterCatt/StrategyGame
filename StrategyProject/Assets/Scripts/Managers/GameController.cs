@@ -29,10 +29,7 @@ public class GameController : StateMachine
 
     public void StartGame()
     {
-        if (StartLevelOnEnemyTurn)
-            SwapTurn(PlayerTurn.ENEMY);
-        else
-            SwapTurn(PlayerTurn.PLAYER);
+        SwapTurn(StartLevelOnEnemyTurn ? PlayerTurn.ENEMY : PlayerTurn.PLAYER);
     }
 
     [SerializeField]
@@ -46,7 +43,7 @@ public class GameController : StateMachine
         switch (turn)
         {
             case PlayerTurn.PLAYER:
-                //ChangeState<>();
+                ChangeState<ST_PlayerTurn>();
                 break;
             case PlayerTurn.ENEMY:
                 //ChangeState<>();
